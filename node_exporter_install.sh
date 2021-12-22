@@ -31,3 +31,6 @@ systemctl daemon-reload
 systemctl enable node_exporter
 systemctl start node_exporter
 systemctl status node_exporter
+
+exit
+exit
