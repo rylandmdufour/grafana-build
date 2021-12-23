@@ -2,8 +2,8 @@
 
 apt update
 
-mkdir /opt/mtr
-cd /opt/mtr
+mkdir /opt/mtr_exporter
+cd /opt/mtr_exporter
 
 wget https://github.com/rylandmdufour/grafana-build/raw/main/mtr-exporter
 
