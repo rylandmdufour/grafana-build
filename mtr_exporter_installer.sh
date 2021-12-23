@@ -5,8 +5,7 @@ apt update
 mkdir /opt/mtr
 cd /opt/mtr
 
-### need to get mtr-exporter file ####
-######wget https://github.com/grafana/loki/releases/download/v2.4.1/promtail-linux-amd64.zip -O promtail.zip
+wget https://github.com/rylandmdufour/grafana-build/raw/main/mtr-exporter
 
 cat << EOF > /etc/systemd/system/mtr-exporter.service 
 [Unit]
@@ -25,13 +24,11 @@ WantedBy=multi-user.target
 EOF
 
 useradd --no-create-home --shell /bin/false node_exporter
-chown -R node_exporter:node_exporter /opt/promtail
-#chown promtail:promtail /etc/promtail
+chown -R node_exporter:node_exporter /opt/mtr_exporter
+
 systemctl daemon-reload
 systemctl enable mtr-exporter
 systemctl start mtr-exporter
 systemctl status mtr-exporter
 
 #### CLEAN UP ####
-
-
