@@ -19,8 +19,8 @@ Wants=network-online.target
 After=network-online.target
 
 [Service]
-User=promtail
-Group=promtail
+User=root
+Group=root
 Type=simple
 ExecStart=/opt/promtail/promtail -config.file=/opt/promtail/promtail-local-config.yaml
 
@@ -28,12 +28,10 @@ ExecStart=/opt/promtail/promtail -config.file=/opt/promtail/promtail-local-confi
 WantedBy=multi-user.target
 EOF
 
-useradd --no-create-home --shell /bin/false promtail
-chown -R promtail:promtail /opt/promtail
-#chown promtail:promtail /etc/promtail
 systemctl daemon-reload
 systemctl enable promtail
 systemctl start promtail
+sleep 5s
 systemctl status promtail
 
 #### CLEAN UP ####

@@ -15,8 +15,8 @@ Wants=network-online.target
 After=network-online.target
 
 [Service]
-User=node_exporter
-Group=node_exporter
+User=root
+Group=root
 Type=simple
 ExecStart=/opt/pihole_exporter/pihole-exporter -pihole_hostname pihole1 -pihole_password pihole
 
@@ -24,12 +24,10 @@ ExecStart=/opt/pihole_exporter/pihole-exporter -pihole_hostname pihole1 -pihole_
 WantedBy=multi-user.target
 EOF
 
-useradd --no-create-home --shell /bin/false node_exporter
-chown -R node_exporter:node_exporter /opt/pihole_exporter
-
 systemctl daemon-reload
 systemctl enable pihole-exporter
 systemctl start pihole-exporter
+sleep 5s
 systemctl status pihole-exporter
 
 #### CLEAN UP ####
