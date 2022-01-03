@@ -7,6 +7,7 @@ cd /opt/pihole_exporter
 
 wget https://github.com/rylandmdufour/grafana-build/raw/main/pihole_exporter-linux-amd64
 mv pihole* pihole_exporter
+chmod +x pihole_exporter
 
 cat << EOF > /etc/systemd/system/pihole-exporter.service 
 [Unit]
@@ -18,7 +19,7 @@ After=network-online.target
 User=root
 Group=root
 Type=simple
-ExecStart=/opt/pihole_exporter/pihole-exporter -pihole_hostname pihole1 -pihole_password pihole
+ExecStart=/opt/pihole_exporter/pihole_exporter -pihole_hostname pihole1 -pihole_password pihole
 
 [Install]
 WantedBy=multi-user.target
