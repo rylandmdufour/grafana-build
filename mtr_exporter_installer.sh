@@ -14,10 +14,10 @@ Wants=network-online.target
 After=network-online.target
 
 [Service]
-User=node_exporter
-Group=node_exporter
+User=root
+Group=root
 Type=simple
-ExecStart=/opt/mtr_exporter/mtr-exporter -tslogs -schedule "@every 10s" -- -G 1 google.com
+ExecStart=/opt/mtr_exporter/mtr-exporter -mtr /usr/bin/mtr -tslogs -schedule "@every 10s" -- -G 1 google.com
 
 [Install]
 WantedBy=multi-user.target
@@ -26,6 +26,7 @@ EOF
 useradd --no-create-home --shell /bin/false node_exporter
 chown -R node_exporter:node_exporter /opt/mtr_exporter
 
+chmod +x /opt/mtr_exporter/mtr_exporter
 systemctl daemon-reload
 systemctl enable mtr-exporter
 systemctl start mtr-exporter
