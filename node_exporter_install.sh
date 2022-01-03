@@ -14,8 +14,8 @@ Wants=network-online.target
 After=network-online.target
 
 [Service]
-User=node_exporter
-Group=node_exporter
+User=root
+Group=root
 Type=simple
 ExecStart=/opt/node_exporter
 
@@ -23,12 +23,10 @@ ExecStart=/opt/node_exporter
 WantedBy=multi-user.target
 EOF
 
-
-useradd --no-create-home --shell /bin/false node_exporter
-chown -R node_exporter:node_exporter /opt/node_exporter
 systemctl daemon-reload
 systemctl enable node_exporter
 systemctl start node_exporter
+sleep 5s
 systemctl status node_exporter
 
 #### CLEAN UP ####

@@ -23,9 +23,6 @@ ExecStart=/opt/mtr_exporter/mtr-exporter -mtr /usr/bin/mtr -tslogs -schedule "@e
 WantedBy=multi-user.target
 EOF
 
-useradd --no-create-home --shell /bin/false node_exporter
-chown -R node_exporter:node_exporter /opt/mtr_exporter
-
 chmod +x /opt/mtr_exporter/mtr-exporter
 systemctl daemon-reload
 systemctl enable mtr-exporter
