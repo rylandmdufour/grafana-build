@@ -26,10 +26,11 @@ EOF
 useradd --no-create-home --shell /bin/false node_exporter
 chown -R node_exporter:node_exporter /opt/mtr_exporter
 
-chmod +x /opt/mtr_exporter/mtr_exporter
+chmod +x /opt/mtr_exporter/mtr-exporter
 systemctl daemon-reload
 systemctl enable mtr-exporter
 systemctl start mtr-exporter
+sleep 5s
 systemctl status mtr-exporter
 
 #### CLEAN UP ####
