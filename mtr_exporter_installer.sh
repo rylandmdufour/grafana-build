@@ -17,7 +17,7 @@ After=network-online.target
 User=root
 Group=root
 Type=simple
-ExecStart=/opt/mtr_exporter/mtr-exporter -mtr /usr/bin/mtr -tslogs -schedule "@every 10s" -- -G 1 google.com
+ExecStart=/opt/mtr_exporter/mtr-exporter -mtr /usr/bin/mtr -tslogs -schedule "@every 10s" -- -G 1 dns.google
 
 [Install]
 WantedBy=multi-user.target
